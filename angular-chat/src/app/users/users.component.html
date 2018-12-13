@@ -1,0 +1,13 @@
+<div class="flex-users">
+  <input
+    type="text"
+    (keyup)="searchUser($event)"
+    maxlength="15"
+    placeholder="Введите имя юзера"
+  />
+  <div class="users">
+    <div class="user" *ngFor="let user of usersToShow" (click)="changeUser()">
+      {{ user.name }}
+    </div>
+  </div>
+</div>

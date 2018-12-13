@@ -1,0 +1,35 @@
+.container {
+  height: 97vmin;
+  display: grid;
+  grid-template-columns: 20% 45% 35%;
+  grid-template-rows: 35% 45% 20%;
+  grid-template-areas:
+    "users messages messages"
+    "users messages messages"
+    "users input input";
+}
+
+.messages {
+  background-color: gainsboro;
+  border-top: solid black 3px;
+  border-right: solid black 3px;
+
+  grid-area: messages;
+}
+
+.input {
+  background-color: rgb(16, 13, 26);
+  border-bottom: solid black 3px;
+  border-right: solid black 3px;
+  border-top: solid black 3px;
+
+  grid-area: input;
+}
+
+.users {
+  background-color: rgb(16, 16, 90);
+  border: solid black 3px;
+  color: whitesmoke;
+  font-style: bold;
+  grid-area: users;
+}

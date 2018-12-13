@@ -1,0 +1,11 @@
+<div class="input-flex">
+  <textarea
+    name=""
+    id="input"
+    cols="100"
+    rows="3"
+    maxlength="1000"
+    [(ngModel)]="messageToSend"
+  ></textarea>
+  <button (click)="this.sendMessage()">Отправить</button>
+</div>

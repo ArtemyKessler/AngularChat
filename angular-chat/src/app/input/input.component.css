@@ -1,0 +1,9 @@
+.input-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.input-flex input,
+button {
+}
