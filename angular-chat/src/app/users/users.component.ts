@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, EventEmitter, Output, Input } from "@angular/core";
 import { UsersService } from "../users.service";
+
 import User from "../User";
 
 @Component({
@@ -12,6 +13,7 @@ export class UsersComponent implements OnInit {
 
   users: User[];
   usersToShow: User[];
+  @Input() dialogueId: number;
 
   ngOnInit() {
     this.getUsers();
@@ -27,5 +29,10 @@ export class UsersComponent implements OnInit {
   getUsers(): void {
     this.usersService.getUsers().subscribe(users => (this.users = users));
     this.usersToShow = this.users;
+  }
+
+  @Output() onChangeDialogueId = new EventEmitter<number>();
+  changeDialogue(id: any) {
+    this.onChangeDialogueId.emit(id);
   }
 }

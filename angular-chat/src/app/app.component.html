@@ -1,5 +1,9 @@
 <div class="container">
-  <app-messages class="messages"></app-messages>
-  <app-input class="input"></app-input>
-  <app-users class="users"></app-users>
+  <app-messages class="messages" [dialogueId]="dialogueId"></app-messages>
+  <app-input class="input" [dialogueId]="dialogueId"></app-input>
+  <app-users
+    [dialogueId]="dialogueId"
+    (onChangeDialogueId)="onChangeDialogueId($event)"
+    class="users"
+  ></app-users>
 </div>

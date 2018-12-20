@@ -6,7 +6,12 @@
     placeholder="Введите имя юзера"
   />
   <div class="users">
-    <div class="user" *ngFor="let user of usersToShow" (click)="changeUser()">
+    <div
+      class="user"
+      *ngFor="let user of usersToShow"
+      (click)="changeDialogue(user.id)"
+      [class.selected]="user.id === dialogueId"
+    >
       {{ user.name }}
     </div>
   </div>

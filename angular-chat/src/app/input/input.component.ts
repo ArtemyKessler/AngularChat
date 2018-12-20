@@ -1,4 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  SimpleChange,
+  Input
+} from "@angular/core";
 import { MessagesService } from "../messages.service";
 
 @Component({
@@ -9,9 +15,16 @@ import { MessagesService } from "../messages.service";
 export class InputComponent implements OnInit {
   constructor(private messageService: MessagesService) {}
   messageToSend: string;
+  @Input() dialogueId: number;
+
   ngOnInit() {}
   sendMessage() {
-    this.messageService.sendMessage({ message: this.messageToSend, userId: 1 });
-    this.messageToSend = "";
+    if (this.messageToSend !== "") {
+      this.messageService.sendMessage(
+        { message: this.messageToSend, userId: 1 },
+        this.dialogueId
+      );
+      this.messageToSend = "";
+    }
   }
 }

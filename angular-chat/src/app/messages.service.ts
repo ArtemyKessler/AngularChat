@@ -1,7 +1,9 @@
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
-import { MESSAGES } from "./mock-messages";
+import { MESSAGES, DIALOGUES } from "./mock-messages";
+
 import Message from "./Message";
+import Dialogue from "./Dialogue";
 
 @Injectable({
   providedIn: "root"
@@ -11,7 +13,18 @@ export class MessagesService {
   getMessages(): Observable<Message[]> {
     return of(MESSAGES);
   }
-  sendMessage(message: Message): void {
-    MESSAGES.push(message);
+  sendMessage(message: Message, dialogueId: number): void {
+    const currentDialogueIndex = DIALOGUES.findIndex(element => {
+      return element.dialogueId === dialogueId;
+    });
+    DIALOGUES[currentDialogueIndex].messages.push(message);
+  }
+
+  getDialogueById(dialogueId: number): Observable<Dialogue> {
+    return of(
+      DIALOGUES.find(element => {
+        return element.dialogueId === dialogueId;
+      })
+    );
   }
 }

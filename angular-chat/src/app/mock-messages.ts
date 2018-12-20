@@ -1,18 +1,26 @@
 import Message from "./Message";
+import Dialogue from "./Dialogue";
 
-class Dialogue {
-  messages: Message[];
-  user: number;
-}
-
-var Dialogues: Dialogue[] = [
+export var DIALOGUES: Dialogue[] = [
   {
     messages: [
       { message: "Зачем вы это сделали", userId: 1 },
       { message: "Классно работает", userId: 1 },
+      { message: "Наверное", userId: 1 },
+      { message: "Зачем вы это сделали", userId: 1 },
+      { message: "Классно работает", userId: 1 },
+      { message: "Наверное", userId: 1 },
+      { message: "Зачем вы это сделали", userId: 1 },
+      { message: "Классно работает", userId: 1 },
+      { message: "Наверное", userId: 1 },
+      { message: "Зачем вы это сделали", userId: 1 },
+      { message: "Классно работает", userId: 1 },
+      { message: "Наверное", userId: 1 },
+      { message: "Зачем вы это сделали", userId: 1 },
+      { message: "Классно работает", userId: 1 },
       { message: "Наверное", userId: 1 }
     ],
-    user: 1
+    dialogueId: 1
   },
   {
     messages: [
@@ -20,7 +28,7 @@ var Dialogues: Dialogue[] = [
       { message: "Отличный", userId: 1 },
       { message: "Прочти на днях", userId: 1 }
     ],
-    user: 2
+    dialogueId: 2
   },
   {
     messages: [
@@ -28,7 +36,15 @@ var Dialogues: Dialogue[] = [
       { message: "Спасибо за участие", userId: 1 },
       { message: "Еще увидимся", userId: 1 }
     ],
-    user: 2
+    dialogueId: 3
+  },
+  {
+    messages: [
+      { message: "Ты ничего не понимаешь в литературе", userId: 1 },
+      { message: "Творчество должно быть свободным", userId: 1 },
+      { message: "Ты в рамках", userId: 1 }
+    ],
+    dialogueId: 4
   }
 ];
 
