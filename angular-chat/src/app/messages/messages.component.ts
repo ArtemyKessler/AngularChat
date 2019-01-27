@@ -8,6 +8,7 @@ import {
 import { MessagesService } from "../messages.service";
 import Message from "../Message";
 import Dialogue from "../Dialogue";
+import { UsersService } from "../users.service";
 
 @Component({
   selector: "app-messages",
@@ -15,7 +16,10 @@ import Dialogue from "../Dialogue";
   styleUrls: ["./messages.component.css"]
 })
 export class MessagesComponent implements OnInit, OnChanges {
-  constructor(private messagesService: MessagesService) {}
+  constructor(
+    private messagesService: MessagesService,
+    private usersService: UsersService
+  ) {}
 
   messages: Message[];
   @Input() dialogueId: number = 3;

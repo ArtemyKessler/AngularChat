@@ -13,7 +13,6 @@
   background-color: gainsboro;
   border-top: solid black 3px;
   border-right: solid black 3px;
-
   grid-area: messages;
 }
 
@@ -27,7 +26,7 @@
 }
 
 .users {
-  background-color: rgb(16, 16, 90);
+  background-color: rgb(28, 28, 49);
   border: solid black 3px;
   color: whitesmoke;
   font-style: bold;

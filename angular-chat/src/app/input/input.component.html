@@ -9,9 +9,10 @@
     />
   </form>
   <textarea
+    (keydown)="symbolAddCheck($event)"
     name=""
     id="input"
-    cols="100"
+    cols="50"
     rows="3"
     maxlength="1000"
     [(ngModel)]="messageToSend"

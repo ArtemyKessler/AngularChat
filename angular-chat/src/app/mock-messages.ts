@@ -24,27 +24,39 @@ export var DIALOGUES: Dialogue[] = [
   },
   {
     messages: [
-      { message: "Написал новый рассказ", userId: 1 },
-      { message: "Отличный", userId: 1 },
-      { message: "Прочти на днях", userId: 1 }
+      { message: "Написал новый рассказ", userId: 2 },
+      { message: "Отличный", userId: 2 },
+      { message: "Прочти на днях", userId: 2 }
     ],
     dialogueId: 2
   },
   {
     messages: [
-      { message: "Завтра выходит мой репортаж", userId: 1 },
-      { message: "Спасибо за участие", userId: 1 },
-      { message: "Еще увидимся", userId: 1 }
+      { message: "Завтра выходит мой репортаж", userId: 3 },
+      { message: "Спасибо за участие", userId: 3 },
+      { message: "Еще увидимся", userId: 3 }
     ],
     dialogueId: 3
   },
   {
     messages: [
-      { message: "Ты ничего не понимаешь в литературе", userId: 1 },
-      { message: "Творчество должно быть свободным", userId: 1 },
-      { message: "Ты в рамках", userId: 1 }
+      { message: "Ты ничего не понимаешь в литературе", userId: 4 },
+      { message: "Творчество должно быть свободным", userId: 4 },
+      { message: "Ты в рамках", userId: 4 }
     ],
     dialogueId: 4
+  },
+  {
+    messages: [
+      { message: "Пишу сообщения себе", userId: 0 },
+      { message: "Например чтобы не потерять важные ссылки", userId: 0 },
+      {
+        message:
+          "https://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes",
+        userId: 0
+      }
+    ],
+    dialogueId: 0
   }
 ];
 

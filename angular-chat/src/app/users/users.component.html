@@ -12,7 +12,8 @@
       (click)="changeDialogue(user.id)"
       [class.selected]="user.id === dialogueId"
     >
-      {{ user.name }}
+      <img src="{{user.userPicUrl}}" alt="Пользователь" />
+      <p>{{ user.name }}</p>
     </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 <div class="messages" id="messages">
   <div class="messageItem" *ngFor="let message of messages">
-    {{ message.message }}
+    <img src="{{this.usersService.getUserPicById(message.userId)}}" />
+    <p>{{ message.message }}</p>
   </div>
 </div>

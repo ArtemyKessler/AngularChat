@@ -13,4 +13,12 @@ export class UsersService {
   getUsers(): Observable<User[]> {
     return of(USERS);
   }
+
+  getUserPicById(id: number): string {
+    return USERS.find(user => {
+      if (user.id === id) {
+        return true;
+      }
+    }).userPicUrl;
+  }
 }
