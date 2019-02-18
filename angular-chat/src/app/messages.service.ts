@@ -17,6 +17,12 @@ export class MessagesService {
     const currentDialogueIndex = DIALOGUES.findIndex(element => {
       return element.dialogueId === dialogueId;
     });
+
+    const currentDialogue = DIALOGUES[currentDialogueIndex];
+    const messages = currentDialogue.messages;
+    const messagesLength = messages.length;
+    const lastUserId = messages[messagesLength - 1].userId;
+    message.withUserPic = message.userId !== lastUserId;
     DIALOGUES[currentDialogueIndex].messages.push(message);
   }
 

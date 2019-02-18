@@ -6,6 +6,7 @@ import {
   Input
 } from "@angular/core";
 import { MessagesService } from "../messages.service";
+import { checkAndUpdateBinding } from "@angular/core/src/view/util";
 
 @Component({
   selector: "app-input",
@@ -25,6 +26,7 @@ export class InputComponent implements OnInit {
     switch (e.keyCode) {
       case 13:
         this.sendMessage();
+
         break;
 
       default:
@@ -33,14 +35,26 @@ export class InputComponent implements OnInit {
   };
 
   sendMessage() {
-    if (this.messageToSend !== "") {
-      const input = document.getElementById("input");
-      let currentCols = parseInt(input.getAttribute("cols"));
-      this.messageService.sendMessage(
-        { message: this.messageToSend, userId: 0 },
-        this.dialogueId
-      );
-      this.messageToSend = "";
+    if (
+      this.messageToSend !== "" &&
+      this.messageToSend !== undefined &&
+      this.messageToSend !== "\n"
+    ) {
+      const checkMessage = this.messageToSend.replace(/ /g, "");
+      if (checkMessage.length > 0) {
+        //const input = document.getElementById("input");
+        //let currentCols = parseInt(input.getAttribute("cols"));
+        this.messageService.sendMessage(
+          {
+            message: this.messageToSend,
+            userId: 0,
+            withUserPic: false,
+            timestamp: new Date()
+          },
+          this.dialogueId
+        );
+      }
+      this.messageToSend = undefined;
     }
   }
 

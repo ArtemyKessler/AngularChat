@@ -1,6 +1,41 @@
 <div class="messages" id="messages">
-  <div class="messageItem" *ngFor="let message of messages">
-    <img src="{{this.usersService.getUserPicById(message.userId)}}" />
-    <p>{{ message.message }}</p>
+  <div class="nameBlock">
+    <div class="nameAndAbsent">
+      <p class="name">
+        {{ this.usersService.getUserNameById(this.dialogueId) }}
+      </p>
+      <p class="absent">
+        absent 4 hours
+      </p>
+    </div>
+    <div class="dropdownMenu">
+      <img src="" alt="check option" />
+    </div>
+  </div>
+  <div class="items">
+    <div
+      class="messageItem"
+      *ngFor="let message of messages.reverse()"
+      [class.selected]="message === this.selectedMessage"
+      (click)="this.selectMessage(message)"
+    >
+      <img
+        *ngIf="message.withUserPic"
+        src="{{ this.usersService.getUserPicById(message.userId) }}"
+      />
+      <div class="messageTextAndStamp">
+        <div class="messageTimestamp">
+          <span *ngIf="message.timestamp.getDate() !== this.date.getDate()">{{
+            message.timestamp.getFullYear() +
+              "-" +
+              ("0" + (date.getMonth() + 1)).slice(-2) +
+              "-" +
+              ("0" + date.getDate()).slice(-2)
+          }}</span>
+          {{ message.timestamp.toTimeString().substring(0, 8) }}
+        </div>
+        <p class="messageText">{{ message.message }}</p>
+      </div>
+    </div>
   </div>
 </div>

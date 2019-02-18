@@ -9,6 +9,8 @@
     />
   </form>
   <textarea
+    onkeyup="if (event.keyCode == 13)
+      this.value = this.value.replace (/\r/g, '').replace (/\n/g, '')"
     (keydown)="symbolAddCheck($event)"
     name=""
     id="input"
@@ -16,6 +18,7 @@
     rows="3"
     maxlength="1000"
     [(ngModel)]="messageToSend"
+    placeholder="Напишите своё сообщение..."
   ></textarea>
   <button (click)="this.sendMessage()">Отправить</button>
 </div>

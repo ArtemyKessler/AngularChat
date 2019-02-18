@@ -14,6 +14,14 @@ export class UsersService {
     return of(USERS);
   }
 
+  getUserNameById(id: number): string {
+    return USERS.find(user => {
+      if (user.id === id) {
+        return true;
+      }
+    }).name;
+  }
+
   getUserPicById(id: number): string {
     return USERS.find(user => {
       if (user.id === id) {

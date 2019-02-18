@@ -20,8 +20,9 @@ export class MessagesComponent implements OnInit, OnChanges {
     private messagesService: MessagesService,
     private usersService: UsersService
   ) {}
-
+  selectedMessage: Message;
   messages: Message[];
+  date: Date = new Date();
   @Input() dialogueId: number = 3;
 
   ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
@@ -36,5 +37,9 @@ export class MessagesComponent implements OnInit, OnChanges {
     this.messagesService
       .getDialogueById(dialogueId)
       .subscribe(dialogue => (this.messages = dialogue.messages));
+  }
+
+  selectMessage(message: Message) {
+    this.selectedMessage = message;
   }
 }
