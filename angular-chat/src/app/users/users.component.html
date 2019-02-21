@@ -3,7 +3,7 @@
     type="text"
     (keyup)="searchUser($event)"
     maxlength="15"
-    placeholder="Введите имя юзера"
+    placeholder="Введите имя юзера..."
   />
   <div class="users">
     <div
@@ -12,8 +12,13 @@
       (click)="changeDialogue(user.id)"
       [class.selected]="user.id === dialogueId"
     >
-      <img src="{{user.userPicUrl}}" alt="Пользователь" />
-      <p>{{ user.name }}</p>
+      <img src="{{ user.userPicUrl }}" alt="Пользователь" />
+      <div class="nameAndLastMessage">
+        <p class="userName">{{ user.name }}</p>
+        <p class="lastMessage">
+          {{ this.getLastMessage(user.id) }}
+        </p>
+      </div>
     </div>
   </div>
 </div>

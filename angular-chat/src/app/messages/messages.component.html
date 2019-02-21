@@ -5,36 +5,67 @@
         {{ this.usersService.getUserNameById(this.dialogueId) }}
       </p>
       <p class="absent">
-        absent 4 hours
+        {{ this.absentTime }}
       </p>
     </div>
     <div class="dropdownMenu">
-      <img src="" alt="check option" />
+      <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous"
+      />
+      <i class="fas fa-ellipsis-v menu">
+        <ul class="dropdownChild">
+          <li>View profile</li>
+          <li (click)="disableNotif(this.dialogueId)">Disable notifications</li>
+          <li>Edit contact</li>
+          <li (click)="disableDialogue(this.dialogueId)">Delete contact</li>
+        </ul>
+      </i>
+    </div>
+    <div class="dayDiv">
+      {{
+        ("0" + (this.date.getMonth() + 1)).slice(-2) +
+          "-" +
+          ("0" + this.date.getDate()).slice(-2)
+      }}
     </div>
   </div>
+  <div class="littleGradient"></div>
   <div class="items">
     <div
       class="messageItem"
       *ngFor="let message of messages.reverse()"
       [class.selected]="message === this.selectedMessage"
+      [class.userMessageItem]="message.userId === 0"
       (click)="this.selectMessage(message)"
     >
       <img
+        class="userPic"
         *ngIf="message.withUserPic"
         src="{{ this.usersService.getUserPicById(message.userId) }}"
       />
       <div class="messageTextAndStamp">
+        <div class="messageText">
+          <p>{{ message.message }}</p>
+          <img
+            class="pic"
+            *ngIf="message.picSrc !== ''"
+            src="{{ message.picSrc }}"
+            alt="error"
+          />
+        </div>
         <div class="messageTimestamp">
           <span *ngIf="message.timestamp.getDate() !== this.date.getDate()">{{
             message.timestamp.getFullYear() +
               "-" +
-              ("0" + (date.getMonth() + 1)).slice(-2) +
+              ("0" + (message.timestamp.getMonth() + 1)).slice(-2) +
               "-" +
-              ("0" + date.getDate()).slice(-2)
+              ("0" + message.timestamp.getDate()).slice(-2)
           }}</span>
           {{ message.timestamp.toTimeString().substring(0, 8) }}
         </div>
-        <p class="messageText">{{ message.message }}</p>
       </div>
     </div>
   </div>

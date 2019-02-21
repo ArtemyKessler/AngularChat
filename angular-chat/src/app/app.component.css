@@ -1,4 +1,5 @@
 .container {
+  font-family: "Roboto", sans-serif;
   height: 97vmin;
   display: grid;
   grid-template-columns: 20% 45% 35%;
@@ -31,4 +32,24 @@
   color: whitesmoke;
   font-style: bold;
   grid-area: users;
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    font-size: 70%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .container {
+    font-size: 45%;
+  }
+}
+
+@media handheld {
+  .container {
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+  }
 }

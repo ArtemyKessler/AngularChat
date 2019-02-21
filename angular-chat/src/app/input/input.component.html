@@ -1,17 +1,32 @@
 <div class="input-flex">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <form enctype="multipart/form-data" method="POST">
-    <input
-      class="picture-input"
-      type="file"
-      multiple
-      accept="image/*,image/jpeg,image/png"
-      name="picture-input"
-    />
+    <div class="file_upload">
+      <button type="button">Выбрать</button>
+      <div id="fileNotPicked">Файл не выбран</div>
+      <img src="" id="imagePreview" />
+      <input
+        class="picture-input"
+        id="picture-input"
+        type="file"
+        multiple
+        accept="image/*,image/jpeg,image/png"
+        name="picture-input"
+        (change)="this.previewFile()"
+      />
+    </div>
   </form>
   <textarea
     onkeyup="if (event.keyCode == 13)
-      this.value = this.value.replace (/\r/g, '').replace (/\n/g, '')"
+      this.value = this.value.replace (/\r/g, '').replace (/\n/g, '')
+      "
     (keydown)="symbolAddCheck($event)"
+    (click)="symbolAddCheck($event)"
+    (mouseup)="symbolAddCheck($event)"
+    (change)="symbolAddCheck($event)"
+    (cut)="symbolAddCheck($event)"
+    (copy)="symbolAddCheck($event)"
+    (paste)="symbolAddCheck($event)"
     name=""
     id="input"
     cols="50"
@@ -20,5 +35,7 @@
     [(ngModel)]="messageToSend"
     placeholder="Напишите своё сообщение..."
   ></textarea>
-  <button (click)="this.sendMessage()">Отправить</button>
+  <button (click)="this.sendMessage()">
+    Отправить <i class="fas fa-paper-plane"></i>
+  </button>
 </div>
