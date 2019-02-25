@@ -7,7 +7,8 @@
 .nameBlock {
   display: flex;
   margin-top: 0%;
-  background-color: rgb(28, 28, 49);
+  /* background-color: rgb(28, 28, 49); */
+  background-color: inherit;
   color: aliceblue;
   min-height: 10%;
 }
@@ -91,10 +92,12 @@
 
 .littleGradient {
   flex-basis: 2%;
-  background: linear-gradient(to top, rgb(16, 13, 26), rgb(28, 28, 49));
+  background: linear-gradient(to top, rgb(16, 13, 26), inherit);
 }
 
 .dayDiv {
+  cursor: default;
+  user-select: none;
   padding-right: 0.5em;
   padding-left: 0.5em;
   padding-top: 0.2em;
@@ -103,7 +106,7 @@
   background-color: rgb(28, 28, 49);
   position: absolute;
   top: 6em;
-  right: 30em;
+  right: 32.5em;
   border-radius: 3em;
 }
 

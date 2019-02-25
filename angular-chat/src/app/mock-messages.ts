@@ -25,7 +25,7 @@ export var DIALOGUES: Dialogue[] = [
   {
     messages: [
       {
-        message: "Написал новый рассказ",
+        message: "сас новый рассказ",
         userId: 2,
         withUserPic: true,
         timestamp: new Date(),
@@ -74,6 +74,7 @@ export var DIALOGUES: Dialogue[] = [
     ],
     dialogueId: 3
   },
+
   {
     messages: [
       {

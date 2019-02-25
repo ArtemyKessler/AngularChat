@@ -15,6 +15,7 @@ input {
 }
 
 .users {
+  max-height: 98%;
   width: 100%;
   height: 98%;
   margin-top: 3%;
@@ -25,6 +26,7 @@ input {
   cursor: pointer;
   height: 5em;
   border: solid black 1px;
+  border-left: none;
   border-collapse: true;
   display: flex;
   flex-direction: row;
@@ -46,6 +48,7 @@ input {
 }
 
 .user img {
+  margin-left: 0.2em;
   margin-top: 1em;
   width: 3em;
   height: 3em;

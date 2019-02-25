@@ -8,6 +8,7 @@ import { Component } from "@angular/core";
 export class AppComponent {
   title = "angular-chat";
   dialogueId: number = 4;
+  themeIsBlack = true;
 
   onChangeDialogueId(id: any): void {
     this.dialogueId = id;

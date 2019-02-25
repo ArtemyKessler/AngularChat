@@ -10,8 +10,20 @@
     "users input input";
 }
 
+.whiteTheme .input {
+  background-color: rgb(112, 103, 143);
+}
+
+.whiteTheme .users {
+  background-color: rgb(150, 136, 197);
+}
+
+.whiteTheme .messages {
+  background-color: rgb(150, 136, 197);
+}
+
 .messages {
-  background-color: gainsboro;
+  background-color: rgb(28, 28, 49);
   border-top: solid black 3px;
   border-right: solid black 3px;
   grid-area: messages;

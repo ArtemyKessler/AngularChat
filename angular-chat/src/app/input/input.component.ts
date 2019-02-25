@@ -7,7 +7,6 @@ import {
 } from "@angular/core";
 import { MessagesService } from "../messages.service";
 import { checkAndUpdateBinding } from "@angular/core/src/view/util";
-import { read } from "fs";
 
 @Component({
   selector: "app-input",
@@ -81,13 +80,6 @@ export class InputComponent implements OnInit {
         );
       }
       this.messageToSend = undefined;
-      const form = document.querySelector("#form");
-
-      const pictureInput = document.querySelector("#picture-input");
-      const input = document.querySelector("#input");
-      const symbols = input.value.length;
-      const currentCols = parseInt(input.getAttribute("cols"));
-      this.colsCalc(symbols, currentCols, input);
     }
   }
 

@@ -35,6 +35,15 @@ export class MessagesComponent implements OnInit, OnChanges {
     this.userId = this.dialogueId;
   }
 
+  swapColorTheme(): void {
+    const appContainer = document.querySelector(".container");
+    if (appContainer.classList.contains("whiteTheme")) {
+      appContainer.classList.remove("whiteTheme");
+    } else if (appContainer) {
+      document.querySelector(".container").classList.add("whiteTheme");
+    }
+  }
+
   disableNotif(id: number) {
     this.messagesService.addToDisabledNotif(id);
   }
