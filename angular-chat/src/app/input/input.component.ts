@@ -21,27 +21,25 @@ export class InputComponent implements OnInit {
   @Input() dialogueId: number;
 
   previewFile() {
-    const preview = document.querySelector("#imagePreview") as HTMLImageElement;
+    //const preview = document.querySelector("#imagePreview") as HTMLImageElement;
     const fileInput = document.querySelector(
       "#picture-input"
     ) as HTMLInputElement;
     const file = fileInput.files[0];
-    const div = document.querySelector("#fileNotPicked") as HTMLDivElement;
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      preview.src = reader.result.toString();
-      preview.style.display = "block";
-      div.style.display = "none";
+      //preview.src = reader.result.toString();
+      //preview.style.display = "block";
+      alert(this.pictureSrc);
       this.pictureSrc = reader.result.toString();
     };
 
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      preview.src = "";
-      preview.style.display = "none";
-      div.style.display = "block";
+      //preview.src = "";
+      //preview.style.display = "none";
       this.pictureSrc = "";
     }
   }

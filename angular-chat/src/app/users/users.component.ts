@@ -48,11 +48,11 @@ export class UsersComponent implements OnInit {
     this.onChangeDialogueId.emit(id);
   }
 
-  getLastMessage(dialogueId: number): string {
-    let messageString: string;
+  getLastMessage(dialogueId: number): Message {
+    let message: Message;
     this.messagesService
       .getLastMessage(dialogueId)
-      .subscribe(lastMessage => (messageString = lastMessage));
-    return messageString;
+      .subscribe(lastMessage => (message = lastMessage));
+    return message;
   }
 }

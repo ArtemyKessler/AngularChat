@@ -55,16 +55,24 @@ export class MessagesService {
     return of(flag);
   }
 
-  getLastMessage(dialogueId: number): Observable<string> {
+  getLastMessage(dialogueId: number): Observable<Message> {
     const messages = DIALOGUES.find(dialogue => {
       return dialogue.dialogueId === dialogueId;
     }).messages;
-    const messageToShow = messages[messages.length - 1];
-    let stringToShow = messageToShow.message;
+    const message = messages[messages.length - 1];
+    const messageToShow: Message = {
+      message: message.message,
+      userId: message.userId,
+      timestamp: message.timestamp,
+      withUserPic: message.withUserPic,
+      picSrc: message.picSrc
+    };
+    const stringToShow = messageToShow.message.slice(0, 20) + "...";
     if (stringToShow.length > 20) {
-      return of(stringToShow.slice(0, 20) + "...");
+      messageToShow.message = stringToShow;
+      return of(messageToShow);
     }
-    return of(stringToShow);
+    return of(messageToShow);
   }
 
   anotherUserMock() {

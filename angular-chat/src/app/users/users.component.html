@@ -3,7 +3,7 @@
     type="text"
     (keyup)="searchUser($event)"
     maxlength="15"
-    placeholder="Введите имя юзера..."
+    placeholder="Search..."
   />
   <div class="users">
     <div
@@ -14,9 +14,14 @@
     >
       <img src="{{ user.userPicUrl }}" alt="Пользователь" />
       <div class="nameAndLastMessage">
-        <p class="userName">{{ user.name }}</p>
+        <div class="userNameAndTime">
+          <p class="userName">{{ user.name }}</p>
+          <p class="time">
+            {{ this.getLastMessage(user.id).timestamp | date: "hh:mm" }}
+          </p>
+        </div>
         <p class="lastMessage">
-          {{ this.getLastMessage(user.id) }}
+          {{ this.getLastMessage(user.id).message }}
         </p>
       </div>
     </div>

@@ -15,7 +15,8 @@
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
         crossorigin="anonymous"
       />
-      <i class="fas fa-ellipsis-v menu">
+      <div class="menu">
+        <i class="fas fa-ellipsis-v"> </i>
         <ul class="dropdownChild">
           <li (click)="swapColorTheme()">Swap color theme</li>
           <li>View profile</li>
@@ -23,7 +24,7 @@
           <li>Edit contact</li>
           <li (click)="disableDialogue(this.dialogueId)">Delete contact</li>
         </ul>
-      </i>
+      </div>
     </div>
     <div class="dayDiv">
       {{
@@ -33,7 +34,6 @@
       }}
     </div>
   </div>
-  <div class="littleGradient"></div>
   <div class="items">
     <div
       class="messageItem"
@@ -59,13 +59,9 @@
         </div>
         <div class="messageTimestamp">
           <span *ngIf="message.timestamp.getDate() !== this.date.getDate()">{{
-            message.timestamp.getFullYear() +
-              "-" +
-              ("0" + (message.timestamp.getMonth() + 1)).slice(-2) +
-              "-" +
-              ("0" + message.timestamp.getDate()).slice(-2)
+            message.timestamp | date
           }}</span>
-          {{ message.timestamp.toTimeString().substring(0, 8) }}
+          {{ message.timestamp | date: "hh:mm" }}
         </div>
       </div>
     </div>

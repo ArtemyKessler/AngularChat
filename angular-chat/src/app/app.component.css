@@ -1,8 +1,13 @@
+body {
+  margin: 0;
+}
+
 .container {
+  background-color: #17212b;
   font-family: "Roboto", sans-serif;
-  height: 97vmin;
+  height: 100vmin;
   display: grid;
-  grid-template-columns: 20% 45% 35%;
+  grid-template-columns: 30% 40% 30%;
   grid-template-rows: 35% 45% 20%;
   grid-template-areas:
     "users messages messages"
@@ -10,51 +15,43 @@
     "users input input";
 }
 
-.whiteTheme .input {
+.whiteTheme {
   background-color: rgb(112, 103, 143);
 }
 
-.whiteTheme .users {
-  background-color: rgb(150, 136, 197);
-}
-
-.whiteTheme .messages {
-  background-color: rgb(150, 136, 197);
-}
-
 .messages {
-  background-color: rgb(28, 28, 49);
-  border-top: solid black 3px;
-  border-right: solid black 3px;
+  background-color: inherit;
   grid-area: messages;
 }
 
 .input {
-  background-color: rgb(16, 13, 26);
-  border-bottom: solid black 3px;
-  border-right: solid black 3px;
-  border-top: solid black 3px;
-
+  background-color: inherit;
   grid-area: input;
 }
 
 .users {
-  background-color: rgb(28, 28, 49);
-  border: solid black 3px;
+  background-color: inherit;
+  border-right: solid black 1px;
   color: whitesmoke;
   font-style: bold;
   grid-area: users;
 }
 
+@media screen and (min-width: 2000px) {
+  .container {
+    font-size: 200%;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .container {
-    font-size: 70%;
+    font-size: 45%;
   }
 }
 
 @media screen and (max-width: 400px) {
   .container {
-    font-size: 45%;
+    font-size: 22%;
   }
 }
 

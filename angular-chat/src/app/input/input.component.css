@@ -1,4 +1,5 @@
 .input-flex {
+  margin-top: 1.5em;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -14,22 +15,10 @@
 .file_upload {
   position: relative;
   overflow: hidden;
-  min-width: 16em;
+  min-width: 5em;
   font-size: 1em;
   height: 3em;
   line-height: 2em;
-}
-
-.file_upload > button {
-  float: left;
-  width: 8em;
-  height: 66%;
-  border-radius: none;
-  margin: 0;
-  border-top-right-radius: 3em;
-  border-bottom-right-radius: 0em;
-  border-top-left-radius: 3em;
-  border-bottom-left-radius: 3em;
 }
 
 .file_upload > div {
@@ -72,17 +61,14 @@
 }
 
 textarea {
+  border: none;
+  color: #6c7883;
+  background-color: inherit;
   overflow: hidden;
   overflow-wrap: break-word;
   outline: none;
   resize: none;
-  padding-left: 1.5em;
-  border-bottom-left-radius: 3em;
-}
-
-form {
-  height: 50%;
-  width: 3;
+  overflow-y: scroll;
 }
 
 button {
@@ -90,4 +76,30 @@ button {
   color: aliceblue;
   border-bottom-right-radius: 3em;
   border-top-right-radius: 3em;
+}
+
+i {
+  font-size: 120%;
+  color: white;
+  cursor: pointer;
+}
+
+.sendIcon {
+  margin-left: 1em;
+  color: #4082bc;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4082bc;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 20px #242f3d;
 }
