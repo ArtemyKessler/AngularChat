@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, Input } from "@angular/core";
 import { UsersService } from "../users.service";
 import { MessagesService } from "../messages.service";
+import { Router } from "@angular/router";
 
 import User from "../User";
 import Message from "../Message";
@@ -13,16 +14,18 @@ import Message from "../Message";
 export class UsersComponent implements OnInit {
   constructor(
     private usersService: UsersService,
-    private messagesService: MessagesService
+    private messagesService: MessagesService,
+    private router: Router
   ) {}
 
   users: User[];
   usersToShow: User[];
   lastMessages: string[];
-  @Input() dialogueId: number;
+  selectedUserId: number;
 
   ngOnInit() {
     this.getUsers();
+    this.selectedUserId = 0;
   }
 
   searchUser(event: any) {
@@ -43,9 +46,11 @@ export class UsersComponent implements OnInit {
     this.usersToShow = this.users;
   }
 
-  @Output() onChangeDialogueId = new EventEmitter<number>();
-  changeDialogue(id: any) {
-    this.onChangeDialogueId.emit(id);
+  redirect(id) {
+    this.selectedUserId = id;
+    this.router.navigate(["/dialogue"], {
+      queryParams: { dialogueId: id }
+    });
   }
 
   getLastMessage(dialogueId: number): Message {

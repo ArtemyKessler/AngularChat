@@ -6,6 +6,7 @@ import { AppComponent } from "./app.component";
 import { InputComponent } from "./input/input.component";
 import { MessagesComponent } from "./messages/messages.component";
 import { UsersComponent } from "./users/users.component";
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { UsersComponent } from "./users/users.component";
     MessagesComponent,
     UsersComponent
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
 })

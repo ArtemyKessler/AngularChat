@@ -9,13 +9,14 @@
     <div
       class="user"
       *ngFor="let user of usersToShow"
-      (click)="changeDialogue(user.id)"
-      [class.selected]="user.id === dialogueId"
+      (click)="redirect(user.id)"
+      [class.selected]="user.id === selectedUserId"
     >
       <img src="{{ user.userPicUrl }}" alt="Пользователь" />
       <div class="nameAndLastMessage">
         <div class="userNameAndTime">
           <p class="userName">{{ user.name }}</p>
+
           <p class="time">
             {{ this.getLastMessage(user.id).timestamp | date: "hh:mm" }}
           </p>

@@ -5,22 +5,40 @@ import {
   SimpleChange,
   Input
 } from "@angular/core";
+import { Router, NavigationStart, NavigationEnd } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
+import { Location } from "@angular/common";
 import { MessagesService } from "../messages.service";
 import Message from "../Message";
 import Dialogue from "../Dialogue";
 import { UsersService } from "../users.service";
-import { stringify } from "@angular/core/src/render3/util";
 
 @Component({
   selector: "app-messages",
   templateUrl: "./messages.component.html",
   styleUrls: ["./messages.component.css"]
 })
-export class MessagesComponent implements OnInit, OnChanges {
+export class MessagesComponent implements OnInit {
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private location: Location,
     private messagesService: MessagesService,
     private usersService: UsersService
-  ) {}
+  ) {
+    router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        /* const url = this.location.path(false);
+        this.dialogueId = parseInt(url[url.length - 1]); */
+        this.dialogueId = parseInt(
+          this.route.snapshot.queryParamMap.get("dialogueId")
+        );
+        this.getDialogueById(this.dialogueId);
+        this.userId = this.dialogueId;
+      }
+    });
+  }
+
   selectedMessage: Message;
   messages: Message[];
   date: Date = new Date();
@@ -28,20 +46,15 @@ export class MessagesComponent implements OnInit, OnChanges {
   timerId = setInterval(this.getAbsentTime.bind(this), 5000);
   userId: number;
   disabledDialogues: number[] = [];
-  @Input() dialogueId = 3;
-
-  ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
-    this.getDialogueById(this.dialogueId);
-    this.userId = this.dialogueId;
-  }
+  dialogueId = 0;
 
   swapColorTheme(): void {
-    const appContainer = document.querySelector(".container");
+    /* const appContainer = document.querySelector(".container");
     if (appContainer.classList.contains("whiteTheme")) {
       appContainer.classList.remove("whiteTheme");
     } else if (appContainer) {
       document.querySelector(".container").classList.add("whiteTheme");
-    }
+    } */
   }
 
   disableNotif(id: number) {
@@ -56,6 +69,14 @@ export class MessagesComponent implements OnInit, OnChanges {
     this.getDialogueById(this.dialogueId);
     this.userId = this.dialogueId;
   }
+
+  /*   getIdFromLocation() {
+    this.route.queryParams.subscribe(params => {
+      this.dialogueId = params.dialogueId;
+      this.getDialogueById(params.dialogueId);
+      this.userId = this.dialogueId;
+    });
+  } */
 
   OnDestroy(): void {
     clearInterval(this.timerId);
@@ -74,7 +95,6 @@ export class MessagesComponent implements OnInit, OnChanges {
 
   getAbsentTime() {
     for (let index = 0; index < this.messages.length; index++) {
-      //this.absentTime = index.toString();
       if (this.messages[index].userId === this.userId) {
         const date = new Date();
         const absentTime =

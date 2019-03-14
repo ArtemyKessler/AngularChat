@@ -7,6 +7,7 @@ import {
 } from "@angular/core";
 import { MessagesService } from "../messages.service";
 import { checkAndUpdateBinding } from "@angular/core/src/view/util";
+import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 
 @Component({
   selector: "app-input",
@@ -14,32 +15,36 @@ import { checkAndUpdateBinding } from "@angular/core/src/view/util";
   styleUrls: ["./input.component.css"]
 })
 export class InputComponent implements OnInit {
-  constructor(private messageService: MessagesService) {}
+  constructor(
+    private messageService: MessagesService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.dialogueId = parseInt(
+          this.route.snapshot.queryParamMap.get("dialogueId")
+        );
+      }
+    });
+  }
   messageToSend: string;
   pictureSrc = "";
 
-  @Input() dialogueId: number;
+  dialogueId: number;
 
-  previewFile() {
-    //const preview = document.querySelector("#imagePreview") as HTMLImageElement;
-    const fileInput = document.querySelector(
-      "#picture-input"
-    ) as HTMLInputElement;
+  previewFile(event: any) {
+    const fileInput = event.target as HTMLInputElement;
     const file = fileInput.files[0];
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      //preview.src = reader.result.toString();
-      //preview.style.display = "block";
-      alert(this.pictureSrc);
       this.pictureSrc = reader.result.toString();
     };
 
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      //preview.src = "";
-      //preview.style.display = "none";
       this.pictureSrc = "";
     }
   }

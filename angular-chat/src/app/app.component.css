@@ -19,7 +19,7 @@ body {
   background-color: rgb(112, 103, 143);
 }
 
-.messages {
+app-messages {
   background-color: inherit;
   grid-area: messages;
 }

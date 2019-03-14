@@ -52,9 +52,9 @@
 .dropdownChild {
   z-index: 4;
   user-select: none;
-  right: 3.5em;
+  right: 1em;
   position: absolute;
-  margin-top: 0.5em;
+  margin-top: 0.3em;
   margin-left: 4em;
   display: none;
   background-color: rgb(17, 14, 29);
@@ -64,6 +64,11 @@
   list-style: none;
   transition: all 0.8s ease;
 }
+
+/* .dropdownChild:hover {
+  opacity: 1;
+  transition: all 0.8s ease;
+} */
 
 .dropdownChild li {
   font-size: 60%;
@@ -78,7 +83,7 @@
 }
 
 .dropdownChild li:hover {
-  background-color: rgb(39, 39, 117);
+  background-color: #272775;
 }
 
 .menu:hover {
@@ -87,7 +92,7 @@
   transition: all 0.8s ease;
 }
 
-.menu:hover .dropdownChild {
+.menu:hover:not(.dropdownChild) .dropdownChild {
   display: block;
   transition: all 0.6s ease;
 }
@@ -122,7 +127,7 @@
   background: linear-gradient(90deg, rgb(16, 158, 158), transparent);
   color: rgb(24, 24, 24);
   background-attachment: scroll;
-  opacity: 0.6;
+  opacity: 0.95;
 }
 
 .userPic {
